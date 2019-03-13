@@ -1,0 +1,26 @@
+{
+  "name": "filmfeed",
+  "version": "1.0.0",
+  "description": "a telegram bot to be updated about film upcoming and now playing in cinemas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giovannitranquillini/filmfeed.git"
+  },
+  "author": "Giovanni Tranquillini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/giovannitranquillini/filmfeed/issues"
+  },
+  "homepage": "https://github.com/giovannitranquillini/filmfeed#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "telegraf": "^3.25.5",
+    "mongoose": "^5.4.17"
+  }
+}
