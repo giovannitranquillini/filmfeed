@@ -1,21 +1,88 @@
-# filmfeed
-FilmFeed è un [bot](http://t.me/filmfeedbot) di telegram sviluppato in JavaScript con Node.js, si appoggia ai module express e Telegraf per la gestione dei comandi del bot. Il deploy del bot è stato fatto su Heroku.
+## FilmFeed
 
-Il bot usa le API messe a disposizione da TMDb per avere le informazioni sui film che vengono fornite. 
+## Cos'è?
+[FilmFeed](https://t.me/filmfeedbot) è un bot di telegram che fornisce varie informazioni sul mondo del Cinema per il panorama italiano. 
+Le funzionalità principali mostrano i film in arrivo _/upcoming_, i film attualmente in sala _/nowplaying_ e permette di ricercare uno specifico film _/search_.
 
-Il bot è unicamente in lingua italiana e le informazioni ricevute sono relative alla realtà italiana.
+**FilmFeed** è scritto interamente in JavaScript con Node.js, si basa su Express.js e [telegraf.js](https://telegraf.js.org/#/), un framework per bot di Telegram.
 
-**Comandi del bot**
-- /nowplaying : mostra informazioni relative a film nelle sale italiane in quel momento
-- /upcoming : mostra informazioni relative ai film in uscita nelle sale italiane
-- /chooseforme : permette di essere consigliati per la visione di un film qualsiasi in base a dei parametri [NOT READY] (il codice non è presente)
-- /search : comando per avere informazioni su uno specifico film (il codice non è presente)
-- /help : mostra la lista dei comandi
-- /info : mostra le informazioni relative al bot (chi fornisce le API, chi è stato attiavamente coinvolto nella produzione) 
+Tutte le informazioni relative ai film sono ottenute tramite il servizio API di [TMDb](https://www.themoviedb.org/documentation/api)
 
-**Se sei interessato a utilizzare il codice sorgente** 
-Nella cartella lib/config è presente il file config.js dove sono presenti le variabili globali di configurazione.
-PORT : porta utilizzata dal server
-TELEGRAM_TOKEN : la chiave delle API di Telegram che ti verrà fornita alla crezione del tuo bot
-TMDB_TOKEN : la chiave API di TMDb
-URL : l'url dell'applicazione su heroku
+<div>
+    <img src="/img/nowplaying.PNG" width="350" title="nowplaying">
+    <img src="/img/upcoming.PNG" width="455" title="upcoming">
+</div>
+
+## Prerequisiti
+
+-   Su Telegraf creare un bot tramite [BotFather](https://telegram.me/botfather)
+-   Fare richiesta su TMDb per una chiave API
+
+## Usare il bot in locale
+
+**In locale** (_da bash_):
+
+```
+    npm install
+```
+
+Usare il codice relativo al polling e non alle webhook:
+
+```
+// webhook
+//app.use(bot.webhookCallback('/' + TELEGRAM_TOKEN));
+//bot.telegram.setWebhook(HEROKU_APP_URL + TELEGRAM_TOKEN);
+
+...
+
+// polling
+bot.startPolling();
+```
+
+Creare un file config-local.js: copiando la struttura di config.js, aggiungere in chiaro i dati riguardanti le chiavi per le API di telegram e TMDb, altrimenti, da bash, creare direttamente in locale le variabili d'ambiente impostando il valore delle chiavi. 
+
+**Eseguire il bot**
+
+```
+    node index.js
+```
+
+_( per implementare nuove feature sarebbe meglio avere un secondo bot che si usa per provare i nuovi pezzi di codice )_
+
+## Deploy del bot
+
+Il deploy di FilmFeed è stato fatto su _Heroku_.
+
+Per farlo dovete accertarvi di avere il **Procfile** all'interno del vostro progetto. 
+Potete aggiungere direttamente su Heroku le variabili d'ambiente in _"la vostra app" > Settings > Config Vars_
+_( in questo caso sarà neccessario anche salvare in URL l'url della nostra applicazione, che ci verrà fornito da heroku )_
+
+![config vars](/img/configvars.PNG)
+
+Per permettere lo scambio di informazioni fra il nostro bot e Telegram useremo delle webhook, il codice necessario è il seguente e si trova nel file app.js
+
+```
+// webhook
+app.use(bot.webhookCallback('/' + TELEGRAM_TOKEN));
+bot.telegram.setWebhook(HEROKU_APP_URL + TELEGRAM_TOKEN);
+```
+
+Una volta fatto il deploy su Heroku, se il package.json e il Procfile sono presenti e scritti correttamente, lo stesso Heroku si arrangerà ad eseguire il codice.
+
+## Comandi del bot
+
+**/nowpalying**: recupera i dati riguardanti i film in sala in questo momento, li restiutisce all'utente. Se il film è uscito da meno di 2 settimane viene aggiunto il badge 🆕.
+
+**/upcoming**: recupera i dati riguardanti i film in arrivo, li riordina in ordine crescente di data e li restituisce tramite messaggio.
+
+**/search**: aggiungendo del testo dopo il comando /search, è possbile cercare uno specifico film _( esempio: /search inception )_
+
+**/chooseforme**: è un'idea da implementare in futuro, questo comando dovrebbe permettere di consigliare l'utente tramite la ricerca di un insieme di film con determinati parametri _(voto, data di rialscio, genere, ...)_
+
+
+
+![commands](/img/commands.PNG)
+
+## Altre funzionalità
+
+Visualizzazione di una scheda descrittiva da browser sotto il path _/info_. La richiesta HTTP verrà gestita da express che caricherà un file .ejs e i dati del film. All'url viene applicata una query con attributo _id_ che dovrà contenere il valore dell'id del film.
