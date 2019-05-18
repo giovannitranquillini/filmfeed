@@ -9,8 +9,8 @@ Le funzionalità principali mostrano i film in arrivo _/upcoming_, i film attual
 Tutte le informazioni relative ai film sono ottenute tramite il servizio API di [TMDb](https://www.themoviedb.org/documentation/api)
 
 <div>
-    <img src="/img/nowplaying.png" width="350" title="nowplaying">
-    <img src="/img/upcoming.png" width="455" title="upcoming">
+    <img src="/img/nowplaying.png" height="550" title="nowplaying">
+    <img src="/img/upcoming.png" height="550" title="upcoming">
 </div>
 
 ## Prerequisiti
