@@ -9,8 +9,8 @@ Le funzionalità principali mostrano i film in arrivo _/upcoming_, i film attual
 Tutte le informazioni relative ai film sono ottenute tramite il servizio API di [TMDb](https://www.themoviedb.org/documentation/api)
 
 <div>
-    <img src="/img/nowplaying.PNG" width="350" title="nowplaying">
-    <img src="/img/upcoming.PNG" width="455" title="upcoming">
+    <img src="/img/nowplaying.png" width="350" title="nowplaying">
+    <img src="/img/upcoming.png" width="455" title="upcoming">
 </div>
 
 ## Prerequisiti
@@ -57,7 +57,7 @@ Per farlo dovete accertarvi di avere il **Procfile** all'interno del vostro prog
 Potete aggiungere direttamente su Heroku le variabili d'ambiente in _"la vostra app" > Settings > Config Vars_
 _( in questo caso sarà neccessario anche salvare in URL l'url della nostra applicazione, che ci verrà fornito da heroku )_
 
-![config vars](/img/configvars.PNG)
+![config vars](/img/configvars.png)
 
 Per permettere lo scambio di informazioni fra il nostro bot e Telegram useremo delle webhook, il codice necessario è il seguente e si trova nel file app.js
 
@@ -81,7 +81,7 @@ Una volta fatto il deploy su Heroku, se il package.json e il Procfile sono prese
 
 
 
-![commands](/img/commands.PNG)
+![commands](/img/commands.png)
 
 ## Altre funzionalità
 
