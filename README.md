@@ -16,7 +16,8 @@ Tutte le informazioni relative ai film sono ottenute tramite il servizio API di 
 ## Prerequisiti
 
 -   Su Telegram creare un bot tramite [BotFather](https://telegram.me/botfather)
--   Fare richiesta su TMDb per una chiave API
+-   Fare richiesta su TMDb per una chiave [API](https://developers.themoviedb.org/3/getting-started/introduction)
+-   Avere installato Node.js e npm
 
 ## Usare il bot in locale
 
@@ -71,6 +72,12 @@ Una volta fatto il deploy su Heroku, se il package.json e il Procfile sono prese
 
 Il deploy può essere fatto da console scaricando la [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) o da Github collegando all'applicazione su Heroku la repo su Github e aggiornando da Heroku (_"la mia app" > Deploy_).
 
+## Risorse utili
+
+-   [Telegraf.js documentation](https://telegraf.js.org/#/)
+-   [Telegram API documentation](https://core.telegram.org)
+
+
 ## Comandi del bot
 
 **/nowpalying**: recupera i dati riguardanti i film in sala in questo momento, li restiutisce all'utente. Se il film è uscito da meno di 2 settimane viene aggiunto il badge 🆕.
@@ -85,6 +92,6 @@ Il deploy può essere fatto da console scaricando la [Heroku CLI](https://devcen
 
 ![commands](/img/commands.png)
 
-## Altre funzionalità
+**Altre funzionalità:**
 
 Visualizzazione di una scheda descrittiva da browser sotto il path _/info_. La richiesta HTTP verrà gestita da express che caricherà un file .ejs e i dati del film. All'url viene applicata una query con attributo _id_ che dovrà contenere il valore dell'id del film.
