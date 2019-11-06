@@ -8,10 +8,10 @@ Le funzionalità principali mostrano i film in arrivo _/upcoming_, i film attual
 
 Tutte le informazioni relative ai film sono ottenute tramite il servizio API di [TMDb](https://www.themoviedb.org/documentation/api)
 
-<div>
+<p align="center">
     <img src="/img/nowplaying.png" height="550" title="nowplaying">
     <img src="/img/upcoming.png" height="550" title="upcoming">
-</div>
+</p>
 
 ## Prerequisiti
 
@@ -86,11 +86,9 @@ Il deploy può essere fatto da console scaricando la [Heroku CLI](https://devcen
 
 **/search**: aggiungendo del testo dopo il comando /search, è possbile cercare uno specifico film _( esempio: /search inception )_
 
-**/chooseforme**: è un'idea da implementare in futuro, questo comando dovrebbe permettere di consigliare l'utente tramite la ricerca di un insieme di film con determinati parametri _(voto, data di rialscio, genere, ...)_
+**/chooseforme**: è un'idea da implementare in futuro, questo comando dovrebbe permettere di consigliare l'utente tramite la ricerca di un insieme di film con determinati parametri _(voto, data di rilascio, genere, ...)_
 
-
-
-![commands](/img/commands.png)
+**@filmfeedbot**: simile a /search nello scopo, questo comando sfrutta la _inline mode_ per cercare un film
 
 **Altre funzionalità:**
 
